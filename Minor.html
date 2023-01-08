@@ -9,6 +9,40 @@
             Summ-Up
         </title>
         <style>
+            h5{
+                display: flex;
+                flex-direction: row;
+                width: 90vw;
+                margin-left: 4.5vw;
+                margin-right: 5.5vw;
+                color: #888888;
+                margin-bottom: 2vh;
+                margin-top: 2vh;
+            }
+
+            h5:before,
+            h5:after {
+                content: "";
+                flex: 1 1;
+                border-bottom: 2px solid #DCDCDC;
+                margin-left: 0.75vw;
+                margin-right: 0.75vw;
+                margin-top: auto;
+                margin-bottom: auto;
+                
+            }
+            #youtube:hover{
+                content: url(1-1.png);
+                cursor: pointer;
+            }
+            #article:hover{
+                content: url(2-1.png);
+                cursor: pointer;
+            }
+            #local_file:hover{
+                content: url(3-1.png);
+                cursor: pointer;
+            }
             .navbar-custom{
                 background-image: linear-gradient(to right, #096192, #1171BA)                
             }
@@ -53,40 +87,43 @@
             </div>
         </nav> 
         <table style="margin: auto; width: 55vw;align-content: center">
-            <tr style="margin: auto">
-                <td style="align-self: center;"><img src="1.png" style="height: 100px; width: 233px; border-radius: 10px"></td>
-                <td style="align-self: center;"><img src="2.png" style="height: 100px; width: 233px;border-radius: 10px"></td>
-                <td style="align-self: center;"><img src="3.png" style="height: 100px; width: 233px;border-radius: 10px"></td>
+            <tr style="margin: auto; align-self: center">
+                <td style="align-self: center;"><img id="youtube" src="1.png" style=" position: relative; height: 100px; width: 233px; border-radius: 10px"></td>
+                <td style="align-self: center;"><img id="article" src="2.png" style=" position: relative; height: 100px; width: 233px;border-radius: 10px"></td>
+                <td style="align-self: center;"><img id="local_file" src="3.png" style=" position: relative; height: 100px; width: 233px;border-radius: 10px"></td>
             </tr>
         </table>
+        <h5>OR</h5>
         <table>
             <tr>
                 <td>
-                    <textarea style="margin-left:12vw;margin-top:5vh;height:45vh;width:35vw;" placeholder="Enter Your Text Here."></textarea>
+                    <textarea style="margin-left:12vw;height:48vh;width:35vw;" placeholder="Enter Your Text Here."></textarea>
                 </td>
                 <td>
-                    <textarea id="p1" placeholder="Summarized Text." style="margin-left: 5vw;margin-top:5vh;height:45vh;width: 35vw;"></textarea>
+                    <textarea id="p1" placeholder="Summarized Text." style="margin-left: 5vw;height:48vh;width: 35vw;"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <div style="text-align: right;padding-top: 2vh;">
+                    <div style="text-align: right;padding-top: 0.5vh;">
                     <button type="button" class="form-submit-button" style="width:fit-content;">Summarize</button>
                     </div>
                 </td>
                 <td>
-                    <div style="text-align: right;padding-top: 2vh;">
+                    <div style="text-align: right;padding-top: 0.5vh;">
                     <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
-                    <button type="button" id="download" class="form-submit-button" style="width:fit-content;" onclick="download('#p1')">Download</button>
+                    <button type="button" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
                     </div>
                 </td>
             </tr>
         </table>
         <br>
+<!--
         <form action="#">
             <input type="file" id="myFile" name="filename">
             <input class="form-submit-button" style="width:5vw;" type="submit">
         </form>
+-->
         <script>
             function copyText() {
                 var Text = document.getElementById("p1");
