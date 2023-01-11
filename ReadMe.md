@@ -12,7 +12,7 @@ source <venv_name>/bin/activate
 ```
 for Windows:
 ```
-    <venv_name>\Scripts\activate
+<venv_name>\Scripts\activate
 ```
 
 

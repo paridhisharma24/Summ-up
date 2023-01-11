@@ -35,11 +35,14 @@ def summarizer(text):
                 else:
                     sentence_scores[sent] += word_frequencies[word.text.lower()]
 
-    
+
     select_length = int(len(sentence_tokens)*0.3)
     summary = nlargest(select_length, sentence_scores, key = sentence_scores.get)
 
     final_summary = [word.text for word in summary]
     summary = ' '.join(final_summary)
 
-    return summary
+    if(len(summary) <= 0):
+        return "Input size too small."
+
+    return text, summary

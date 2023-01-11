@@ -1,0 +1,290 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <title>
+            Summ-Up
+        </title>
+        <style>
+        
+            .popup {
+              position:absolute;
+              top:-150%;
+              left:50%;
+              opacity:0;
+              transform:translate(-50%,-50%) scale(1.25);
+              width:380px;
+              padding:20px 30px;
+              background:#fff;
+              box-shadow:2px 2px 5px 5px rgba(0,0,0,0.15);
+              border-radius:10px;
+              transition:top 0ms ease-in-out 200ms,
+                         opacity 200ms ease-in-out 0ms,
+                         transform 200ms ease-in-out 0ms; 
+            }
+            .popup.active {
+              top:50%;
+              opacity:1;
+              transform:translate(-50%,-50%) scale(1);
+              transition:top 0ms ease-in-out 0ms,
+                         opacity 200ms ease-in-out 0ms,
+                         transform 200ms ease-in-out 0ms;
+            }
+            .popup .close-btn {
+              position:absolute;
+              top:10px;
+              right:10px;
+              width:20px;
+              height:20px;
+              background:lightgray;
+              color:black;
+              text-align:center;
+              line-height:15px;
+              border-radius:15px;
+              cursor:pointer;
+            }
+            .popup .close-btn:hover{
+              position:absolute;
+              top:10px;
+              right:10px;
+              width:20px;
+              height:20px;
+              background:#1171ba;
+              color:#eee;
+              text-align:center;
+              line-height:15px;
+              border-radius:15px;
+              cursor:pointer;
+            }
+            .popup .form h2 {
+              text-align:center;
+              color:#222;
+              margin:10px 0px 20px;
+              font-size:25px;
+            }
+            .popup .form .form-element {
+              margin:15px 0px;
+            }
+            .popup .form .form-element input[type="text"]{
+              margin-top:5px;
+              display:block;
+              width:100%;
+              padding:10px;
+              outline:none;
+              border:1px solid #aaa;
+              border-radius:5px;
+            }
+            .popup .form .form-element button {
+              width:100%;
+              height:40px;
+              border:none;
+              outline:none;
+              font-size:16px;
+              cursor:pointer;
+                background: #fff;
+	           color: #1171ba;
+	           border: 1px solid #eee;
+	           border-radius: 5px;
+	           text-shadow: none;
+            }
+            .popup .form .form-element button:hover{
+              width:100%;
+              height:40px;
+              border:none;
+              outline:none;
+              font-size:16px;
+                background: #1171ba;
+	            color: #fff;
+	            border: 1px solid #eee;
+	            border-radius: 5px;
+	            text-shadow: none;
+                cursor: pointer;
+            }      
+            
+            h5{
+                display: flex;
+                flex-direction: row;
+                width: 90vw;
+                margin-left: 4.5vw;
+                margin-right: 5.5vw;
+                color: #888888;
+                margin-bottom: 2vh;
+                margin-top: 2vh;
+            }
+
+            h5:before,
+            h5:after {
+                content: "";
+                flex: 1 1;
+                border-bottom: 2px solid #DCDCDC;
+                margin-left: 0.75vw;
+                margin-right: 0.75vw;
+                margin-top: auto;
+                margin-bottom: auto;
+                
+            }
+            #youtube:hover{
+                content: url(../static/1-1.png);
+                cursor: pointer;
+            }
+            #article:hover{
+                content: url(../static/2-1.png);
+                cursor: pointer;
+            }
+            #local_file:hover{
+                content: url(../static/3-1.png);
+                cursor: pointer;
+            }
+            .navbar-custom{
+                background-image: linear-gradient(to right, #096192, #1171BA)                
+            }
+            .form-submit-button {
+                background: #fff;
+	            color: #1171ba;
+	            border: 1px solid #eee;
+	            border-radius: 5px;
+	            text-shadow: none;
+            }           
+
+            .form-submit-button:hover {
+	            background: #1171ba;
+	            color: #fff;
+	            border: 1px solid #eee;
+	            border-radius: 5px;
+	            text-shadow: none;
+                cursor: pointer;
+            }
+            .card {
+                display:inline-block;
+            }
+            .hide{
+                display: none;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-custom collapse.show" style="margin-bottom:5vh;height:80px;">
+            <div class="container-fluid">
+                <a class="navbar-brand" style="width:10vw;"href="#">
+                <img src="../static/transparent-white.png" alt="Logo" width="250px" height="64px" class="d-inline-block align-text-top">
+                </a>
+            </div>
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-size: 20px;padding-left:25px;padding-right:25px;color: white;" aria-current="page" href="#">Extension</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="font-size: 20px;padding-left:25px;padding-right:25px;color: white;align-content: flex-end;" href="#">Features</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav> 
+        <table style="margin: auto; width: 55vw;align-content: center">
+            <tr style="margin: auto; align-self: center">
+                <td style="align-self: center;"><img id="youtube" onclick=onYoutubeClick() src="../static/1.png" style=" position: relative; height: 100px; width: 233px; border-radius: 10px"></td>
+                <td style="align-self: center;"><img id="article" onclick=onArticleClick() src="../static/2.png" style=" position: relative; height: 100px; width: 233px;border-radius: 10px"></td>
+                <td style="align-self: center;"><img id="local_file" onclick=onLocalClick() src="../static/3.png" style=" position: relative; height: 100px; width: 233px;border-radius: 10px"></td>
+            </tr>
+        </table>
+        
+        
+        <form class="popup" method="post" action="/anything">
+          <div class="close-btn">&times;</div>
+          <div class="form">
+            <h2 id = "customText"></h2>
+            <div class="form-element">
+                <input type="text" id="myLink" name = "myValue" placeholder="URL">
+            </div>
+            <div class="form-element">
+              <button class="form-submit-button" type="submit">Submit</button> 
+<!--                add code/variable to copy the value of link to var-->
+            </div>
+            </div>
+          </form>
+                
+        <h5>OR</h5>
+        <table>
+            <tr>
+                <td>
+                    <form method="post" action="inp_summarization">
+                        <textarea style="margin-left:12vw;height:48vh;width:35vw;" placeholder="Enter Your Text Here." name="input-text"></textarea>
+                        <div style="text-align: right;padding-top: 0.5vh;">
+                            <button type="submit" class="form-submit-button" style="width:fit-content;">Summarize</button>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <form method="" action="">
+                    <textarea id="p1" placeholder="Summarized Text." style="margin-left:        5vw;height:48vh;width: 35vw;"></textarea>
+                        <div style="text-align: right;padding-top: 0.5vh;">
+                            <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
+                            <button type="submit" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+<!--
+            <tr>
+                <td>
+                    <div style="text-align: right;padding-top: 0.5vh;">
+                    <button type="button" class="form-submit-button" style="width:fit-content;">Summarize</button>
+                    </div>
+                </td>
+                <td>
+                    <div style="text-align: right;padding-top: 0.5vh;">
+                    <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
+                    <button type="button" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
+                    </div>
+                </td>
+            </tr>
+-->
+        </table>
+        <br>
+        <script>
+            function copyText() {
+                var Text = document.getElementById("p1");
+                Text.select();
+                navigator.clipboard.writeText(Text.value);
+            }
+            
+            function onYoutubeClick(){
+                document.getElementById("customText").innerHTML="Enter YouTube Link";
+                document.getElementById("myLink").type="text";
+              document.querySelector(".popup").classList.add("active");
+            }
+            function onArticleClick(){
+             document.getElementById("customText").innerHTML="Enter Article Link";
+                document.getElementById("myLink").type="text";
+              document.querySelector(".popup").classList.add("active");
+            }
+            function onLocalClick(){
+             document.getElementById("customText").innerHTML="Select Local File";
+                document.getElementById("myLink").type="file";
+              document.querySelector(".popup").classList.add("active");
+            }
+            function submitFun(){
+//                sendYtLink();
+                document.querySelector(".popup").classList.remove("active");
+            }
+//            function sendYtLink(){
+//                let ytLink = document.getElementById("myLink").value;
+//                console.log(ytLink);
+//                const request = new XMLHttpRequest();
+//                request.open('POST', '/ProcessUserInfo/${JSON.stringify(ytLink)}');
+//                request.send();
+//            }
+            document.querySelector(".popup .close-btn").addEventListener("click",function(){
+              document.querySelector(".popup").classList.remove("active");
+            });
+            
+        </script>
+
+    </body>
+</html>
