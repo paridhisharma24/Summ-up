@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import json
+from summarizer import summarizer
+
 app = Flask(__name__)
 @app.route('/')
 def index():
@@ -13,13 +15,16 @@ def index():
 #     print (username)
 #     print()
 #     return( '/' )
+
 @app.route('/anything',methods=['POST', 'GET'])
 def anything():
         text=request.form.get("myValue")
         return render_template("abc.html", text=text)
+
 @app.route('/anything1',methods=['POST', 'GET'])
 def anything1():
         text1=request.form.get("HEYHEY")
-        return render_template("abc.html", text=text1)
+        res = summarizer(text1)
+        return render_template("abc.html", text=res)
 if __name__ == '__main__':
     app.run(debug=True)
