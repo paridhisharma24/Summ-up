@@ -1,0 +1,154 @@
+.popup {
+    position:absolute;
+    top:-150%;
+    left:50%;
+    opacity:0;
+    transform:translate(-50%,-50%) scale(1.25);
+    width:380px;
+    padding:20px 30px;
+    background:#fff;
+    box-shadow:2px 2px 5px 5px rgba(0,0,0,0.15);
+    border-radius:10px;
+    transition:top 0ms ease-in-out 200ms,
+               opacity 200ms ease-in-out 0ms,
+               transform 200ms ease-in-out 0ms; 
+  }
+  .popup.active {
+    top:50%;
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1);
+    transition:top 0ms ease-in-out 0ms,
+               opacity 200ms ease-in-out 0ms,
+               transform 200ms ease-in-out 0ms;
+  }
+  .popup .close-btn {
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:20px;
+    height:20px;
+    background:lightgray;
+    color:black;
+    text-align:center;
+    line-height:15px;
+    border-radius:15px;
+    cursor:pointer;
+  }
+  .popup .close-btn:hover{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:20px;
+    height:20px;
+    background:#1171ba;
+    color:#eee;
+    text-align:center;
+    line-height:15px;
+    border-radius:15px;
+    cursor:pointer;
+  }
+  .popup .form h2 {
+    text-align:center;
+    color:#222;
+    margin:10px 0px 20px;
+    font-size:25px;
+  }
+  .popup .form .form-element {
+    margin:15px 0px;
+  }
+  .popup .form .form-element input[type="text"]{
+    margin-top:5px;
+    display:block;
+    width:100%;
+    padding:10px;
+    outline:none;
+    border:1px solid #aaa;
+    border-radius:5px;
+  }
+  .popup .form .form-element button {
+    width:100%;
+    height:40px;
+    border:none;
+    outline:none;
+    font-size:16px;
+    cursor:pointer;
+      background: #fff;
+     color: #1171ba;
+     border: 1px solid #eee;
+     border-radius: 5px;
+     text-shadow: none;
+  }
+  .popup .form .form-element button:hover{
+    width:100%;
+    height:40px;
+    border:none;
+    outline:none;
+    font-size:16px;
+      background: #1171ba;
+      color: #fff;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      text-shadow: none;
+      cursor: pointer;
+  }      
+  
+  h5{
+      display: flex;
+      flex-direction: row;
+      width: 90vw;
+      margin-left: 4.5vw;
+      margin-right: 5.5vw;
+      color: #888888;
+      margin-bottom: 2vh;
+      margin-top: 2vh;
+  }
+
+  h5:before,
+  h5:after {
+      content: "";
+      flex: 1 1;
+      border-bottom: 2px solid #DCDCDC;
+      margin-left: 0.75vw;
+      margin-right: 0.75vw;
+      margin-top: auto;
+      margin-bottom: auto;
+      
+  }
+  #youtube:hover{
+      content: url(../static/1-1.png);
+      cursor: pointer;
+  }
+  #article:hover{
+      content: url(../static/2-1.png);
+      cursor: pointer;
+  }
+  #local_file:hover{
+      content: url(../static/3-1.png);
+      cursor: pointer;
+  }
+  .navbar-custom{
+      background-image: linear-gradient(to right, #096192, #1171BA)                
+  }
+  .form-submit-button {
+      background: #fff;
+      color: #1171ba;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      text-shadow: none;
+  }           
+
+  .form-submit-button:hover {
+      background: #1171ba;
+      color: #fff;
+      border: 1px solid #eee;
+      border-radius: 5px;
+      text-shadow: none;
+      cursor: pointer;
+  }
+  .card {
+      display:inline-block;
+  }
+  .hide{
+      display: none;
+      margin: auto;
+  }
