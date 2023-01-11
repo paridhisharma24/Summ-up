@@ -58,10 +58,8 @@
         <table>
             <tr>
                 <td>
-                    <form method="post">
-                        <textarea style="margin-left:12vw;height:48vh;width:35vw;" placeholder="Enter Your Text Here." name="HEYHEY">
-                            {{input}}
-                        </textarea>
+                    <form method="post", action="/inp_summarization">
+                        <textarea style="margin-left:12vw;height:48vh;width:35vw;" placeholder="Enter Your Text Here." name="input-text">{{input}}</textarea>
                         <div style="text-align: right;padding-top: 0.5vh;">
                             <button type="submit" class="form-submit-button" style="width:fit-content;">Summarize</button>
                         </div>
@@ -69,9 +67,7 @@
                 </td>
                 <td>
                     <form method="" >
-                    <textarea id="p1" placeholder="Summarized Text." style="margin-left:        5vw;height:48vh;width: 35vw;">
-                        {{summary}}
-                    </textarea>
+                    <textarea id="p1" placeholder="Summarized Text." style="margin-left: 5vw;height:48vh;width: 35vw;">{{summary}}</textarea>
                         <div style="text-align: right;padding-top: 0.5vh;">
                             <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
                             <button type="submit" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>

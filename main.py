@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import json
-from summarizer import summarizer
+from utils.summarizer import summarizer
 
 app = Flask(__name__)
 @app.route('/')
