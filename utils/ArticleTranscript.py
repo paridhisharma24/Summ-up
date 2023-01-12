@@ -7,9 +7,9 @@ def Generate_artc_transcript(article_link):
 
     soup = BeautifulSoup(htmlContent,'html.parser')
 
-    gen_transcript = ''
+    gen_transcript = ""
     for para in soup.find_all("p"):
         gen_transcript += para.get_text()
-        gen_transcript += ' '
+        gen_transcript += " "
 
     return gen_transcript

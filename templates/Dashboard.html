@@ -14,7 +14,7 @@
     <body>
         <nav class="navbar navbar-expand-md navbar-custom collapse.show" style="margin-bottom:5vh;height:80px;">
             <div class="container-fluid">
-                <a class="navbar-brand" style="width:10vw;"href="#">
+                <a class="navbar-brand" style="width:10vw;"href="/">
                 <img src="../static/transparent-white.png" alt="Logo" width="250px" height="64px" class="d-inline-block align-text-top">
                 </a>
             </div>
@@ -40,15 +40,15 @@
         </table>
         
         
-        <form class="popup" method="post" action="/anything">
+        <form class="popup" id="form_action" method="post" action="">
           <div class="close-btn">&times;</div>
           <div class="form">
-            <h2 id = "customText"></h2>
+            <h2 id="customText"></h2>
             <div class="form-element">
                 <input type="text" id="myLink" name = "myValue" placeholder="URL">
             </div>
             <div class="form-element">
-              <button class="form-submit-button" type="submit">Submit</button> 
+              <button class="form-submit-button" type="submit">Summarize</button> 
 <!--                add code/variable to copy the value of link to var-->
             </div>
             </div>
@@ -103,16 +103,20 @@
                 document.getElementById("customText").innerHTML="Enter YouTube Link";
                 document.getElementById("myLink").type="text";
               document.querySelector(".popup").classList.add("active");
+              document.getElementById("form_action").action = "/yt_link";
             }
             function onArticleClick(){
              document.getElementById("customText").innerHTML="Enter Article Link";
                 document.getElementById("myLink").type="text";
               document.querySelector(".popup").classList.add("active");
+              document.getElementById("form_action").action = "/article_link";
             }
             function onLocalClick(){
              document.getElementById("customText").innerHTML="Select Local File";
                 document.getElementById("myLink").type="file";
               document.querySelector(".popup").classList.add("active");
+              document.getElementById("form_action").enctype="multipart/form-data";
+              document.getElementById("form_action").action = "/local_file";
             }
             function submitFun(){
 //                sendYtLink();
