@@ -44,5 +44,6 @@ def summarizer(text):
 
     if(len(summary) <= 0):
         return "Input size too small."
+
     return summary
-    # return text, summary
+    
