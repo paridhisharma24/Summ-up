@@ -40,7 +40,7 @@
         </table>
         
         
-        <form class="popup" method="post" action="">
+        <form class="popup" id="form_action" method="post" action="">
           <div class="close-btn">&times;</div>
           <div class="form">
             <h2 id = "customText"></h2>
@@ -115,6 +115,7 @@
              document.getElementById("customText").innerHTML="Select Local File";
                 document.getElementById("myLink").type="file";
               document.querySelector(".popup").classList.add("active");
+              document.getElementById("form_action").enctype="multipart/form-data";
               document.getElementById("form_action").action = "/local_file";
             }
             function submitFun(){
