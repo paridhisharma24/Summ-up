@@ -31,6 +31,12 @@
                 </div>
             </div>
         </nav> 
+
+        {% if get_flashed_messages() %}
+        <div onLoad="javascript:myalert()">
+        </div>
+        {%endif%}
+        
         <table style="margin: auto; width: 55vw;align-content: center">
             <tr style="margin: auto; align-self: center">
                 <td style="align-self: center;"><img id="youtube" onclick=onYoutubeClick() src="../static/1.png" style=" position: relative; height: 100px; width: 233px; border-radius: 10px"></td>
@@ -93,6 +99,10 @@
         </table>
         <br>
         <script>
+            function myalert() {
+                alert("File Type not supported.\nWe only support '.doc', '.docx', '.txt. & '.pdf' formats.");
+            }
+
             function copyText() {
                 var Text = document.getElementById("p1");
                 Text.select();

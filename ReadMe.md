@@ -22,5 +22,5 @@ pip install -r requirements.txt
 
 ### To run the project, run the following command in terminal
 ```
-python3 flask_var.py
+python3 main.py
 ```
