@@ -7,7 +7,9 @@ from werkzeug.utils import secure_filename
 import io
 import PyPDF2
 from docx import Document
+# from docx import *
 import os
+
 
 
 # from utils.DataExtraction import 
@@ -51,6 +53,7 @@ def local_file():
         input = w.read()
         summary = summarizer(input)
         return render_template("SummarizedDash.html", input=input, summary=summary)
+
     elif format == "pdf":
         a = PyPDF2.PdfReader(file)
         #Getting The Number of Pages in PDF
@@ -58,20 +61,22 @@ def local_file():
         pg_no = len(a.pages)
         text = ""
         #Reading and Extracting The Data of PDF Page Wise
-        for i in range(pg_no):
+        for i in range(0, pg_no):
             text += a.pages[i].extract_text()
             # text += a.getPage(i).extractText()
         summary = summarizer(text)
         return render_template("SummarizedDash.html", input=text, summary=summary)
 
-    elif format == "doc" or format=="docx":
-        doc_obj = open(file,"rb")
-        doc_reader = Document(doc_obj)
-        data = ""
-        for i in doc_reader.paragraphs:
-            data += i.text+"\n"
-        summary = summarizer(data)
-        return render_template("SummarizedDash.html", input=data, summary=summary)
+    # elif format == "doc" or format=="docx":
+    #     # doc_reader = opendocx(file)
+    #     text = textract.process(file)
+
+    #     doc_reader = Document(doc_obj)
+    #     data = ""
+    #     for i in doc_reader.paragraphs:
+    #         data += i.text+"\n"
+    #     summary = summarizer(data)
+    #     return render_template("SummarizedDash.html", input=data, summary=text)
 
     else:
         flash("You Entered An Invalid File Type.")

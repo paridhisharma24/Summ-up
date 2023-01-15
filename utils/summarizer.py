@@ -11,6 +11,7 @@ def summarizer(text):
     punctuation = string.punctuation + '\n'
 
     word_frequencies = {}
+    max_val = 0
     for word in doc:
         if word.text.lower() not in stopwords:
             if word.text.lower() not in punctuation:
@@ -18,8 +19,9 @@ def summarizer(text):
                     word_frequencies[word.text] = 1
                 else:
                     word_frequencies[word.text] += 1
-    
-    max_frequency = max(word_frequencies.values()) 
+                max_val = max(max_val, word_frequencies[word.text])
+
+    max_frequency = max_val 
 
     for word in word_frequencies.keys():
         word_frequencies[word] = word_frequencies[word]/max_frequency
@@ -42,8 +44,4 @@ def summarizer(text):
     final_summary = [word.text for word in summary]
     summary = ' '.join(final_summary)
 
-    if(len(summary) <= 0):
-        return "Input size too small."
-
     return summary
-    
