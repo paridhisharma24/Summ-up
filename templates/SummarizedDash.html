@@ -70,7 +70,7 @@
                     <textarea id="p1" placeholder="Summarized Text." style="margin-left: 5vw;height:48vh;width: 35vw;">{{summary}}</textarea>
                         <div style="text-align: right;padding-top: 0.5vh;">
                             <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
-                            <button type="submit" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
+                            <button type="button" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="downloader()">Download</button>
                         </div>
                     </form>
                 </td>
@@ -132,6 +132,31 @@
             document.querySelector(".popup .close-btn").addEventListener("click",function(){
               document.querySelector(".popup").classList.remove("active");
             });
+
+            function downloadFile(file_name, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8, ' + encodeURIComponent(text));
+                element.setAttribute('download', file_name);
+                document.body.appendChild(element);
+                //onClick property
+                element.click();
+                document.body.removeChild(element);
+                };
+                function downloader(){
+                    //The value of the file name input box
+                    var file_name = "Download.txt"
+                    
+                    //The value of what has been input in the textarea
+                    var content = document.getElementById("p1").value;
+                    
+                    // The && (logical AND) operator indicates whether both operands are true. If both operands have nonzero values, the result has the value 1 . Otherwise, the result has the value 0.
+                    
+                    if (file_name && content) {
+                    downloadFile(file_name, content);
+                    // document.getElementById("download").
+                    }
+                    
+                }
             
         </script>
 
