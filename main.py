@@ -79,7 +79,7 @@ def local_file():
     #     return render_template("SummarizedDash.html", input=data, summary=text)
 
     else:
-        flash("You Entered An Invalid File Type.")
-        return render_template("Dashboard.html")
+        # flash("You Entered An Invalid File Type.")
+        return render_template("SummarizedDash.html",input="Invalid Document Type. Please upload a pdf or text file.",summary="Invalid Document Type. Please upload a pdf or Text file.")
 if __name__ == '__main__':
     app.run(debug=True) 

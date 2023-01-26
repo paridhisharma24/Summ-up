@@ -49,5 +49,7 @@ def summarizer(text):
     summary = sorted(summary)
     final_summary = [key[x].text for x in summary]
     final_summary = ' '.join(final_summary)
+    if len(final_summary) == 0:
+        return "Input Size Too Small"
 
     return final_summary
