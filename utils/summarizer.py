@@ -20,7 +20,6 @@ def summarizer(text):
                 else:
                     word_frequencies[word.text] += 1
                 max_val = max(max_val, word_frequencies[word.text])
-
     max_frequency = max_val 
 
     for word in word_frequencies.keys():
@@ -37,11 +36,18 @@ def summarizer(text):
                 else:
                     sentence_scores[sent] += word_frequencies[word.text.lower()]
 
+    score = {}
+    key = {}
+    for i, (sentence, sc) in enumerate(sentence_scores.items()):
+        score[i] = sc
+        key[i] = sentence
+        i += 1
 
     select_length = int(len(sentence_tokens)*0.3)
-    summary = nlargest(select_length, sentence_scores, key = sentence_scores.get)
+    summary = nlargest(select_length, score, key = score.get)
 
-    final_summary = [word.text for word in summary]
-    summary = ' '.join(final_summary)
+    summary = sorted(summary)
+    final_summary = [key[x].text for x in summary]
+    final_summary = ' '.join(final_summary)
 
-    return summary
+    return final_summary
