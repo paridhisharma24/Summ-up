@@ -1,5 +1,6 @@
 <html>
     <head>
+        <link href="../static/page-icon.ico" rel="icon">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -22,16 +23,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ml-auto mt-2">
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;padding-left:25px;padding-right:25px;color: white;" aria-current="page" href="#">Extension</a>
+                            <a href="#features-bar"><button class="nav-link on-hover" style=" background-color: transparent; border: 0px; font-size: 20px;padding-left:25px;padding-right:25px;color: white;" aria-current="page">Features</button></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" style="font-size: 20px;padding-left:25px;padding-right:25px;color: white;align-content: flex-end;" href="#">Features</a>
+                            <a href="#extension-bar"><button class="nav-link on-hover" style="background-color: transparent; border: 0px; font-size: 20px;padding-left:25px;padding-right:25px;color: white;align-content: flex-end;">Extension</button></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav> 
-        <table style="margin: auto; width: 55vw;align-content: center">
+        <table style="margin-left: auto; margin-right: auto; width: 55vw;align-content: center">
             <tr style="margin: auto; align-self: center">
                 <td style="align-self: center;"><img id="youtube" onclick=onYoutubeClick() src="../static/1.png" style=" position: relative; height: 100px; width: 233px; border-radius: 10px"></td>
                 <td style="align-self: center;"><img id="article" onclick=onArticleClick() src="../static/2.png" style=" position: relative; height: 100px; width: 233px;border-radius: 10px"></td>
@@ -49,7 +50,6 @@
             </div>
             <div class="form-element">
               <button class="form-submit-button" type="submit">Summarize</button> 
-<!--                add code/variable to copy the value of link to var-->
             </div>
             </div>
           </form>
@@ -70,28 +70,21 @@
                     <textarea id="p1" placeholder="Summarized Text." style="margin-left: 5vw;height:48vh;width: 35vw;"></textarea>
                         <div style="text-align: right;padding-top: 0.5vh;">
                             <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
-                            <button type="submit" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
+                            <button type="button" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="downloader()">Download</button>
                         </div>
                     </form>
                 </td>
             </tr>
-<!--
-            <tr>
-                <td>
-                    <div style="text-align: right;padding-top: 0.5vh;">
-                    <button type="button" class="form-submit-button" style="width:fit-content;">Summarize</button>
-                    </div>
-                </td>
-                <td>
-                    <div style="text-align: right;padding-top: 0.5vh;">
-                    <button type="button" id="copy" class="form-submit-button" style="width:fit-content;" onclick="copyText()">Copy</button>
-                    <button type="button" id="download" class="form-submit-button" style="width:fit-content;padding-top: 0.5vh;" onclick="download('#p1')">Download</button>
-                    </div>
-                </td>
-            </tr>
--->
         </table>
-        <br>
+        <hr style="width: 90vw; height: 5px; margin-left: 5vw; margin-right: 5vw">
+        <div id="features-bar" style="height: auto; width: auto">
+            <img src="../static/features-section.png" style="height: 100%; width: 100%;">
+            
+        </div>
+        <div id="extension-bar">
+            <video src="../static/extension-section.mp4" style="height:100%; width: 100%" autoplay muted loop></video>
+        </div>
+        
         <script>
             function copyText() {
                 var Text = document.getElementById("p1");
@@ -119,20 +112,36 @@
               document.getElementById("form_action").action = "/local_file";
             }
             function submitFun(){
-//                sendYtLink();
                 document.querySelector(".popup").classList.remove("active");
             }
-//            function sendYtLink(){
-//                let ytLink = document.getElementById("myLink").value;
-//                console.log(ytLink);
-//                const request = new XMLHttpRequest();
-//                request.open('POST', '/ProcessUserInfo/${JSON.stringify(ytLink)}');
-//                request.send();
-//            }
             document.querySelector(".popup .close-btn").addEventListener("click",function(){
               document.querySelector(".popup").classList.remove("active");
             });
+
+            function downloadFile(file_name, text) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8, ' + encodeURIComponent(text));
+                element.setAttribute('download', file_name);
+                document.body.appendChild(element);
+                //onClick property
+                element.click();
+                document.body.removeChild(element);
+                };
+                function downloader(){
+                    //The value of the file name input box
+                    var file_name = "Download.txt"
+                    
+                    //The value of what has been input in the textarea
+                    var content = document.getElementById("p1").value;
+                    
+                    // The && (logical AND) operator indicates whether both operands are true. If both operands have nonzero values, the result has the value 1 . Otherwise, the result has the value 0.
+                    
+                    if (file_name && content) {
+                    downloadFile(file_name, content);
+                    }
+                }
             
+
         </script>
 
     </body>
